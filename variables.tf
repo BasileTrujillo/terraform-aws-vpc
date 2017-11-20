@@ -40,6 +40,11 @@ variable "create_database_subnet_group" {
   default     = true
 }
 
+variable "database_public_accessibility" {
+  description = "Controls if database subnet should be public"
+  default     = false
+}
+
 variable "azs" {
   description = "A list of availability zones in the region"
   default     = []

@@ -251,7 +251,7 @@ resource "aws_route_table_association" "database" {
   count = "${length(var.database_subnets)}"
 
   subnet_id      = "${element(aws_subnet.database.*.id, count.index)}"
-  route_table_id = "${element(aws_route_table.private.*.id, count.index)}"
+  route_table_id = "${var.database_public_accessibility ? aws_route_table.public.id : element(aws_route_table.private.*.id, count.index)}"
 }
 
 resource "aws_route_table_association" "elasticache" {
